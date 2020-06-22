@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Jobs</title>
+<meta charset="utf-8">
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+</script>
+<![endif]-->
+<link href="website.css" rel="stylesheet">
+<script>
+	function hideUlAll()
+	{
+		document.querySelector("#ulOne").style.display = "none";
+		document.querySelector("#ulTwo").style.display = "none";
+		document.querySelector("#ulThree").style.display = "none";
+		document.querySelector("#ulFour").style.display = "none";
+	}
+
+	function showUlOne()
+	{
+		document.querySelector("#ulOne").style.display = "block";
+	}
+	function hideUlOne()
+	{
+		document.querySelector("#ulOne").style.display = "none";
+	}
+	
+	function showUlTwo()
+	{
+		document.querySelector("#ulTwo").style.display = "block";
+	}
+	function hideUlTwo()
+	{
+		document.querySelector("#ulTwo").style.display = "none";
+	}
+	
+	function showUlThree()
+	{
+		document.querySelector("#ulThree").style.display = "block";
+	}
+	function hideUlThree()
+	{
+		document.querySelector("#ulThree").style.display = "none";
+	}
+	
+	function showUlFour()
+	{
+		document.querySelector("#ulFour").style.display = "block";
+	}
+	function hideUlFour()
+	{
+		document.querySelector("#ulFour").style.display = "none";
+	}
+	
+	
+	function displayJobResponsibilities(radioButtonNumber)
+	{
+		if (radioButtonNumber == 0)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "November 2014 - Present";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Scan and key grocery data into Giant Eagle's Java cashiering program at a rate of >= 13 items/minute";
+			showUlThree();
+			document.querySelector("#liThree").textContent = "Instruct new shoppers how to use chip readers, Apple Pay, and the Giant Eagle app";
+			showUlFour();
+			document.querySelector("#liFour").textContent = "Provide excellent customer service, receiving >= 2 positive online survey reviews";
+		}
+		else if (radioButtonNumber == 1)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "June 2014 - November 2014";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Unpaid volunteer position";
+			showUlThree();
+			document.querySelector("#liThree").textContent = "Scanned paper patient records into Lake Health's computerized patient database";
+			hideUlFour();
+		}
+		else if (radioButtonNumber == 2)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "October 2013 - April 2014";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Organized and tidied store and dressing-room clothing items, sorting by color and size";
+			showUlThree();
+			document.querySelector("#liThree").textContent = "Searched through large quantities of items for small but significant errors, such as a bathing suit hanging on the coat display";
+			hideUlFour();
+		}
+		else if (radioButtonNumber == 3)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "October 2012 - October 2013";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Prepared food following Pizza Hut's safety guidelines";
+			showUlThree();
+			document.querySelector("#liThree").textContent = "Counted change";
+			showUlFour();
+			document.querySelector("#liFour").textContent = "Quickly and efficiently switched between Pizza Hut's 7 main workstations";
+		}
+		else if (radioButtonNumber == 4)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "April 2012 - August 2012";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Washed dishes";
+			hideUlThree();
+			hideUlFour();
+		}
+	}
+	
+	
+</script>
+</head>
+<body onload="hideUlAll()">
+<div id="wrapper">
+<header>
+	<h1>
+		Employment History
+	</h1>
+</header>
+<nav>
+	<ul>
+		<li id="new"><a href="funWithJavaScript.html">New</a></li>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="education.html">Education</a></li>
+		<li><a href="jobs.html">Jobs</a></li>
+		<li><a href="csskills.html">CS Skills</a></li>
+		<li><a href="hobbies.html">Hobbies</a></li>
+		<li><a href="contact.html">Contact</a></li>
+	<ul>
+</nav>
+<main>
+	<h3 class="centered">
+		Select a job to learn more about it.
+	</h3>
+		<form id="formId">
+			<input type="radio" name="jobChoices" id="giantEagle" value="giantEagle" onchange="displayJobResponsibilities(0)">Giant Eagle<br/>
+			<input type="radio" name="jobChoices" id="lakeHealth" value="lakeHealth" onchange="displayJobResponsibilities(1)">Lake Health<br/>
+			<input type="radio" name="jobChoices" id="sears" value="sears" onchange="displayJobResponsibilities(2)">Sears<br/>
+			<input type="radio" name="jobChoices" id="pizzaHut" value="pizzaHut" onchange="displayJobResponsibilities(3)">Pizza Hut<br/>
+			<input type="radio" name="jobChoices" id="chesterlandTavern" value="chesterlandTavern" onchange="displayJobResponsibilities(4)">Chesterland Tavern<br/>
+		</form>
+	<ul id="ulOne">
+		<li id="liOne"></li>
+	</ul>
+	<ul id="ulTwo">
+		<li id="liTwo"></li>
+	</ul>
+	<ul id="ulThree">
+		<li id="liThree"></li>
+	</ul>
+	<ul id="ulFour">
+		<li id="liFour"></li>
+	</ul>
+</main>
+<footer>
+	Copyright &copy; 04/07/2018
+</footer>
+</div>
+</body>
+</html>

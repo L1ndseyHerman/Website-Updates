@@ -1,0 +1,369 @@
+
+header, nav, main, footer, aside
+{
+	display: block;
+}
+
+body
+{
+	background-color: #9999FF;
+	color: #000000;
+}
+header
+{
+	text-align: center;
+	font-size: 175%;
+	margin-left: auto;
+	margin-right: auto;
+}
+nav 
+{
+	float: left;
+	color: #FFFFFF;
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+main
+{
+	padding-top: 20px;
+	margin-top: 50px;
+	height: 500px;
+	background-color: #FFFFFF;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	width: 850px;
+	border: 4px solid #000000;
+	font-size: 125%;
+	padding-right: 10px;
+}
+footer
+{
+	background-color: #6666FF;
+	text-align: center;
+	font-style: italic;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 150px;
+	font-size: 80%;
+	border: 2px solid #000000;
+	width: 850px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#wrapper 
+{ 
+	width: 80%;
+    margin-right: auto;
+	margin-left: auto;
+	min-width: 1356px;
+}
+nav ul 
+{ 
+	list-style-type: none;
+}
+nav a 
+{ 
+	text-decoration: none; 
+	
+}
+nav a:link 
+{
+	color: #000000;
+}
+nav a:visited 
+{
+	color: #6666FF;
+}
+nav a:hover
+{
+	color: #CCCCFF;
+}
+aside
+{
+	float: right;
+	width: 200px;
+	background-color: #6666FF;
+	margin-top: 15px;
+	height: 500px;
+	border: 2px solid #000000;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#magenta
+{
+	color: #FF44AA;
+}
+#skyBlue
+{
+	background-color: #9999FF;
+}
+#lighterSkyBlue
+{
+	background-color: #CCCCFF;
+}
+#darkerSkyBlue
+{
+	background-color: #6666FF;
+}
+nav li
+{
+	border: 2px solid #000000;
+	padding: 15px 5px;
+	font-size: 125%;
+	margin-bottom: 35px;
+	background-color: #FFFFFF;
+	border-radius: 20px;
+	text-align: center;
+	display: block;
+}
+#myPhoto
+{
+	float: left;
+	margin-right: 50px;
+	border: 3px solid black;
+	padding: 3px;
+	height: 250px; 
+	width: 200px;
+}
+h2
+{
+	border-bottom: 2px solid #000000;
+}
+table
+{
+	border: 3px solid #000000;
+	border-collapse: collapse;
+	margin: auto;
+	width: 80%;
+}
+td, th
+{
+	padding: 10px;
+	border: 1px solid #3F2860;
+}
+tr:nth-of-type(odd)
+{
+	background-color: #6666FF;
+}
+tr:nth-of-type(even)
+{
+	background-color: #CCCCFF;
+}
+caption
+{
+	font-weight: bold;
+	font-size: 150%;
+	margin-bottom: 15px;
+}
+select
+{
+	margin-left: 25%;
+	margin-right: auto;
+	width: 50%;
+	padding: 5px;
+	font-size: 105%;
+}
+.centered
+{
+	text-align: center;
+}
+@keyframes moveSmiley
+{
+	from {top: 0px;}
+	to {top: 375px;}
+}
+#smiley
+{
+	height: 100px;
+	width: 100px;
+	float: right;
+	margin-right: 50px;
+	animation-name: moveSmiley;
+	animation-duration:3s;
+	position: relative;
+	animation-iteration-count: infinite;
+	animation-fill-mode: forwards;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+}
+@keyframes ironManFlies
+{
+	from {left: 0px; bottom: 0px;}
+	to {left: 730px; bottom: 110px;}
+}
+#ironMan
+{
+	height: 175px;
+	width: 100px;
+	margin-top: 100px;
+	animation-name: ironManFlies;
+	animation-duration: 4s;
+	position: relative;
+	animation-iteration-count: infinite;
+	animation-fill-mode: forwards;
+	animation-direction: alternate;
+	animation-timing-function: ease;
+}
+#hobbiesDiv
+{
+	background-color: #6666FF;
+	height: 360px;
+	padding: 10px;
+	border: 3px solid black;
+}
+#liOne
+{
+	font-weight: bold;
+}
+form
+{
+	margin-left: 30%;
+}
+#hobbyChoicesPhone
+{
+	display: none;
+}
+@media only screen and (max-width: 1024px)
+{
+	header
+	{
+		font-size: 150%;
+	}
+	aside
+	{
+		float: none;
+		height: 150px;
+		width: 650px;
+		margin-top: 25px;
+	}
+	nav 
+	{
+		float: none;
+		width: 450px;
+		height: 150px;
+		border: 2px solid #000000;
+	}
+	nav li
+	{
+		padding: 10px 20px;
+		font-size: 100%;
+		margin: 10px 15px;
+		display: inline-block;
+	}
+	#wrapper
+	{
+		width: auto;
+		min-width: auto;
+	}
+	main
+	{
+		font-size: 100%;
+		border: 3px solid black;
+		width: 650px;
+		margin-top: 25px;
+		padding-top: 15px;
+		padding-left: 15px;
+	}
+	footer
+	{
+		margin-top: 25px;
+		width: 650px;
+	}
+	#myPhoto
+	{
+		border: 2px solid #000000;
+		padding: 2px;
+		margin-right: 25px;
+		height: 200px;
+		width: 150px;
+	}
+	h2
+	{
+		font-size: 90%;
+	}
+	table 
+	{
+		border: 1px solid #000000;
+	}
+	td, th
+	{
+		padding: 5px;
+	}
+	#hobbiesDiv
+	{
+		border: 1px solid black;
+	}
+	#ironMan
+	{
+		animation-name: none;
+	}
+	#smiley
+	{
+		animation-name: none;
+	}
+}
+@media only screen and (max-width: 768px)
+{
+	header
+	{
+		font-size: 100%;
+		border: 2px solid black;
+		width: 350px;
+	}
+	aside
+	{
+		width: 350px;
+		height: 125px;
+		margin-top: 0px;
+		font-size: 85%;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	main
+	{
+		margin-top: 0px;
+		border: 2px solid black;
+		width: 350px;
+		height: 650px;
+	}
+	footer
+	{
+		margin-top: 0px;
+		font-size: 75%;
+		width: 350px;
+	}
+	img
+	{
+		display: none;
+	}
+	nav 
+	{
+		width: 275px;
+		height: 225px;
+	}
+	nav li 
+	{
+		padding: 5px 20px;
+		width: 150px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	td, th
+	{
+		padding: 3px;
+	}
+	#hobbyChoices
+	{
+		display: none;
+	}
+	#hobbyChoicesPhone
+	{
+		display: block;
+	}
+}

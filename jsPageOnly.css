@@ -1,0 +1,145 @@
+/* This CSS stylesheet is meant to look more like a traditional website. The other six webpages I created to present 
+in my Intro to Web Design class. That's why I purposely designed them to look like PowerPoint slides,
+and I experimented with unique designs, such as making the nav links look like clouds floating on a blue sky. 
+Now, however, my goal is to show employers I know the basics of web design, so here is a style that I still 
+enjoy that looks more typical. */
+
+
+/* Below is just a list of the colors used in the CSS, not used in the HTML: */
+#black
+{
+	background-color: #000000;
+}
+#white
+{
+	color: #FFFFFF;
+}
+/* Magenta might look better, might not use this grey: */
+#grey
+{
+	color: 888888;
+}/* For most of the magenta stuff: */
+#brightMagenta
+{
+	color: #FF00AA;
+}
+/* Just for when you hover over the nav links, makes it look like a button being pushed in: */
+#dullMagenta
+{
+	color: #880044;
+}
+/* The space on the sides is so the nave links and things don't get way too spread out on larger computer screens. 
+The body code handles the pink jpg border(sides), the div has everything else (middle). */
+body
+{
+	background-image: url(pinkSides.jpg);
+	/* Means x and y repeat: */
+	background-repeat: repeat;
+}
+div 
+{
+	background-color: #000000;
+	color: #FFFFFF;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+h1
+{
+	text-align: center;
+	color: #FF00AA
+}
+/* For the freecodecamp.org link: */
+a
+{
+	color: #FF00AA;
+}
+nav
+{
+	text-align: center;
+}
+/* Gets rid of the bullet points in the nav: */
+nav ul 
+{ 
+	list-style-type: none;
+}
+/* Gets rid of the underlines in the nav: */
+/*nav a 
+{ 
+	text-decoration: none; 
+}*/
+
+/* link = before clicked, visited = after, hover obvious 
+Changing it so that the freecodecamp.org link reacts the same as the nav links. */
+
+/*nav a:link */
+a:link
+{
+	color: #FF00AA;
+}
+/*nav a:visited */
+a:visited
+{
+	color: #FF00AA;
+}
+/*nav a:hover*/
+a:hover
+{
+	color: #880044;
+}
+/* Makes the nav horizontal: */
+nav li
+{
+	display: inline-block;
+	margin: 0px 20px;
+}
+main
+{
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+/* For some reason, margin does nothing here, has to be padding. */
+td
+{
+	padding-bottom: 20px;
+}
+/* Makes every-other tr on the invisible table magenta */
+tr:nth-of-type(even)
+{
+	color: #FF00AA;
+}
+.buttonStuff
+{
+	background-color: #FF00AA;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+}
+footer
+{
+	text-align: center;
+	font-style: italic;
+	font-size: 80%;
+}
+
+/* Cellphones and tablets will have the changes listed below: */
+@media only screen and (max-width: 1024px)
+{
+	/* Don't need as much space on the sides for smaller devices: */
+	div
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+	/* Nav is vertical now: */
+	nav li
+	{
+		display: block;
+		margin-top: 20px;
+	}
+}
+

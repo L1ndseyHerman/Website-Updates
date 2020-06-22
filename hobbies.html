@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hobbies</title>
+<meta charset="utf-8">
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+</script>
+<![endif]-->
+<link href="website.css" rel="stylesheet">
+<script>
+	function hideAll()
+	{
+		document.querySelector("#pLink1").style.display = "none";
+		document.querySelector("#aLink1").style.display = "none";
+		document.querySelector("#pLink2").style.display = "none";
+		document.querySelector("#aLink2").style.display = "none";
+		document.querySelector("#pLink3").style.display = "none";
+		document.querySelector("#aLink3").style.display = "none";
+		document.querySelector("#copyrightNatureNotice").style.display = "none";
+		document.querySelector("#ironMan").style.display = "none";
+		document.querySelector("#natureLink").style.display = "none";
+	}
+	function hideMarchingBandStuff()
+	{
+		document.querySelector("#pLink1").style.display = "none";
+		document.querySelector("#aLink1").style.display = "none";
+		document.querySelector("#pLink2").style.display = "none";
+		document.querySelector("#aLink2").style.display = "none";
+		document.querySelector("#pLink3").style.display = "none";
+		document.querySelector("#aLink3").style.display = "none";
+	}
+	function showMarchingBandStuff()
+	{
+		document.querySelector("#pLink1").style.display = "block";
+		document.querySelector("#aLink1").style.display = "block";
+		document.querySelector("#pLink2").style.display = "block";
+		document.querySelector("#aLink2").style.display = "block";
+		document.querySelector("#pLink3").style.display = "block";
+		document.querySelector("#aLink3").style.display = "block";
+	}
+	function hideCopyrightNatureNotice()
+	{
+		document.querySelector("#copyrightNatureNotice").style.display = "none";
+		document.querySelector("#natureLink").style.display = "none";
+	}
+	function showCopyrightNatureNotice()
+	{
+		document.querySelector("#copyrightNatureNotice").style.display = "block";
+		document.querySelector("#natureLink").style.display = "block";
+	}
+	function hideIronMan()
+	{
+		document.querySelector("#ironMan").style.display = "none";
+	}
+	function showIronMan()
+	{
+		document.querySelector("#ironMan").style.display = "block";
+	}
+
+	function showHobby()
+	{
+		if (hobbyChoices.value == "music")
+		{
+			showMarchingBandStuff();
+			hideCopyrightNatureNotice();
+			hideIronMan();
+			document.querySelector("#hobbyInfo").textContent = "I am a proud member of the West Geauga High School Marching Band, where I played the flute for all four years of high school. I was also in Symphonic Band, where I made it to sixth chair flute out of fourty-ish flute players by my senior year. Below are some links to marching band performances I was a part of:";
+			document.querySelector("#hobbiesDiv").style.backgroundImage = "url(EighthNote.jpg)";
+			document.querySelector("#hobbyInfo").style.color = "#CCCCFF";
+			document.querySelector("#pLink1").textContent = "The most diffucult routine I was a part of:";
+			document.querySelector("#pLink1").style.color = "#CCCCFF";
+			document.querySelector("#pLink2").textContent = "The most fun I ever had in marching band:";
+			document.querySelector("#pLink2").style.color = "#CCCCFF";
+			document.querySelector("#pLink3").textContent = "And one where my face is the thumbnail for some reason:"
+			document.querySelector("#pLink3").style.color = "#CCCCFF";
+		}
+		else if (hobbyChoices.value == "creativeWriting")
+		{
+			hideMarchingBandStuff();
+			hideCopyrightNatureNotice();
+			showIronMan();
+			document.querySelector("#hobbyInfo").textContent = "I enjoy reading and writing science fiction and fantasy stories. I was also a part of Lakeland's student newspaper for one semester. During that time, I published five articles in The Lakelander, and one made the front page.";
+			document.querySelector("#hobbiesDiv").style.backgroundImage = "none";
+			document.querySelector("#hobbyInfo").style.color = "#000000";
+		}
+		else if (hobbyChoices.value == "nature")
+		{
+			hideMarchingBandStuff();
+			showCopyrightNatureNotice();
+			hideIronMan();
+			document.querySelector("#hobbyInfo").textContent = "I enjoy getting outside and jogging, as well as going for walks in parks. I also like spending time with animals, whether by observing wildlife, or by cuddling up with my family's two adorable cats.";
+			document.querySelector("#hobbiesDiv").style.backgroundImage = "url(Woodlands.jpg)";
+			document.querySelector("#hobbyInfo").style.color = "#FFEECC";
+			document.querySelector("#copyrightNatureNotice").textContent = "This background image is copyright of Scottish Natural Heritage.";
+			document.querySelector("#copyrightNatureNotice").style.color = "#FFEECC";
+		}
+		else 
+		{
+			hideMarchingBandStuff();
+			hideCopyrightNatureNotice();
+			hideIronMan();
+			document.querySelector("#hobbyInfo").textContent = "";
+			document.querySelector("#hobbiesDiv").style.backgroundImage = "none";
+		}
+	}
+
+</script>
+</head>
+<body onload="hideAll()">
+<div id="wrapper">
+<header>
+	<h1>
+		Hobbies
+	</h1>
+</header>
+<nav>
+	<ul>
+		<li id="new"><a href="funWithJavaScript.html">New</a></li>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="education.html">Education</a></li>
+		<li><a href="jobs.html">Jobs</a></li>
+		<li><a href="csskills.html">CS Skills</a></li>
+		<li><a href="hobbies.html">Hobbies</a></li>
+		<li><a href="contact.html">Contact</a></li>
+	<ul>
+</nav>
+<main>
+	<p class="centered">
+		Select a hobby to learn more about it.
+	</p>
+	<select id="hobbyChoices" onchange="showHobby()">
+		<option>Hobbies:</option>
+		<option value="music">Music</option>
+		<option value="creativeWriting">Creative Writing</option>
+		<option value="nature">Nature</option>
+	</select>
+	
+	
+	<div id="hobbiesDiv">
+		<p id="hobbyInfo"></p>
+			<p id="copyrightNatureNotice"></p>
+				<a id="natureLink" href="https://www.nature.scot/professional-advice/land-and-sea-management/managing-land/forests-and-woodlands">Their Website</a>
+			<p id="pLink1"></p>
+				<a id="aLink1" href="https://www.youtube.com/watch?v=BBV_rFQH7lw">Video1</a>
+			<p id="pLink2"></p>
+				<a id="aLink2" href="https://www.youtube.com/watch?v=04JEjTd0s2Y">Video2</a>
+			<p id="pLink3"></p>
+				<a id="aLink3" href="https://www.youtube.com/watch?v=BvpN3VJOfPo">Video3</a>
+		<img id="ironMan" src="IronMan.jpg" alt="A picture of Iron Man that moves.">
+	</div>
+</main>
+<footer>
+	Copyright &copy; 04/07/2018
+</footer>
+</div>
+</body>
+</html>

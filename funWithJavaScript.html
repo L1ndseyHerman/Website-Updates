@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>funWithJavaScript</title>
+	<meta charset="utf-8">
+	<!-- The code below makes it work for ppl using dinosaur Internet Explorer: -->
+	
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+	</script>
+	<![endif]-->
+	
+	<!-- Uses a seperate CSS sheet from the other six webpages on this site: -->
+	<link href="jsPageOnly.css" rel="stylesheet">
+	
+	
+	
+	<script>
+	/* This game is meant to show my knowledge of double-arrays, as well as randomly-generated numbers. */
+	function randomSentenceGenerator()
+	{
+		/*
+			Testing double array stuff:
+		var talkLikeYoda = [["This", "Sentence", "Is"], ["Not", "In", "Order"]];
+		document.querySelector("#sentenceGoesHere").textContent = talkLikeYoda[1][0] + " " + talkLikeYoda[1][1] + " " + talkLikeYoda[1][2]
+		+ " " + talkLikeYoda[0][0] + " " + talkLikeYoda[0][1] + " " + talkLikeYoda[0][2] + "."; 
+		*/
+		
+		/*
+			Testing random number stuff:
+		document.querySelector("#sentenceGoesHere").textContent = Math.floor(Math.random() * 3);
+		*/
+		
+		//	It seems ES6 works on my Firefox browser, so changing from "var" to "const". freecodecamp.com said it might not work, 
+		//	but that course was created in 2015, so maybe it's standard now. 
+		
+		//var sentenceArray = [
+		const SENTENCE_ARRAY = [
+		["A mysterious ", "The one and only", "Some random"], 
+		[" fluffy,", " pink,", " hairy,", " terrifying,", " delightful,", " badass,", " sexy,", " clumsy,", " invisible,", " drunk,"],
+		[" partying", " trash-talking", " gravity-defying", " spork-throwing", " laser-shooting", " fanfiction-writing", " soul-stealing", 
+		" racecar-driving", " tap-dancing"],
+		[" Grumpy Cat", " My Little Pony", " sock", " robot", " final exam", " cute guy", " superhero", " anime girl", " Grim Reaper", " penguin",
+		" monkey", " ballerina"],
+		[" angrily", " timidly", " lazily", " cheerfully", " foolishly", " stubbornly", " accidentally"],
+		[" does parkour", " knits a sweater", " has a teaparty", " plots world domination", " gains magic powers", " finds true love", 
+		" sings a Justin Bieber song", " makes a hit YouTube video", " sells their soul", " catches Coronavirus"],
+		[" just in time for dinner.", " in a dumpster.", " with honor.", " at the center of a black hole.", " at Giant Eagle.",
+		" despite living in Cleveland, Ohio.", " quietly, so as not to get grounded.", " on the ceiling.",
+		" on a planet where everyone burps to communicate.", " at the bottom of the ocean."]
+		];
+		document.querySelector("#sentenceGoesHere").textContent = SENTENCE_ARRAY[0][Math.floor(Math.random() * 3)] + 
+		SENTENCE_ARRAY[1][Math.floor(Math.random() * 10)] + SENTENCE_ARRAY[2][Math.floor(Math.random() * 9)] + 
+		SENTENCE_ARRAY[3][Math.floor(Math.random() * 12)] 
+		+ SENTENCE_ARRAY[4][Math.floor(Math.random() * 7)] + SENTENCE_ARRAY[5][Math.floor(Math.random() * 10)] + 
+		SENTENCE_ARRAY[6][Math.floor(Math.random() * 10)];
+	}
+	
+	
+	
+	
+	function encryptText()
+	{
+		//	Showing that I know strings can have single or double quotes.
+		const ALPHABET_ARRAY = ['a',"b",'c',"d",'e',"f",'g',"h",'i',"j",'k',"l",'m',"n",'o',"p",'q',"r",'s',"t",'u',"v",'w',"x",'y',"z"];
+		//	These are numbers to show == can cast a string to match them.
+		const NUMBER_ARRAY = [0,1,2,3,4,5,6,7,8,9];
+		
+		var textFromTextbox = cypherTextbox.value;
+		var encryptionArray = [];
+		var finalEncryptionText = "";
+		var tempIndex = -1;
+		
+		for (let index=0; index<textFromTextbox.length; index++)
+		{
+			//encryptionArray.push(textFromTextbox[index]);
+			
+			//	Checking lower-case letters first. Uses .indexOf() to show I know how to do that instead of a for-loop 26 times.
+			tempIndex = ALPHABET_ARRAY.indexOf(textFromTextbox[index]);
+			//	Means that character in the text is a lowercase letter:
+			if (tempIndex > -1)
+			{
+				tempIndex = tempIndex + 1;
+				//	Loop to index 0 if index out-of-bounds (26):
+				if (tempIndex >= ALPHABET_ARRAY.length)
+				{
+					tempIndex = 0;
+				}
+				//	Add it to the end of the encrypted array.
+				encryptionArray.push(ALPHABET_ARRAY[tempIndex]);
+			}
+			
+			
+			//	Now checking the numbers. This time, I'm using a for-loop to show that I know that == can cast a string to a number to check if
+			//	they're equal
+			for (let numbersIndex=0; numbersIndex<NUMBER_ARRAY.length; numbersIndex++)
+			{
+				if (textFromTextbox[index] == NUMBER_ARRAY[numbersIndex])
+				{
+					//	It just so happens that the index of each number is the same as the number stored at that index.
+					tempIndex = numbersIndex - 1;
+					//	Loop to index 9 if it's out-of-bounds (-1):
+					if (tempIndex < 0)
+					{
+						tempIndex = NUMBER_ARRAY.length-1;
+					}
+					//	Add it to the end of the encrypted array.
+					encryptionArray.push(NUMBER_ARRAY[tempIndex]);
+				}
+			}
+		}
+		
+		
+		//	Turns the array into a string.
+		for (let index=0; index<encryptionArray.length; index++)
+		{
+			finalEncryptionText = finalEncryptionText + encryptionArray[index];
+		}
+
+		
+		document.querySelector("#cypherGoesHere").textContent = finalEncryptionText;
+		//	Whoops, the code below puts a comma between each letter because it's an array. The code above is a string, works better.
+		//document.querySelector("#cypherGoesHere").textContent = encryptionArray;
+		
+		//	The reason I left the code below is to show how I gradually built/tested each part of this function. First, I tested the <p></p>, then I 
+		//	tested the arrays, then the text from the textbox, and so on, and so forth.
+		
+		//document.querySelector("#cypherGoesHere").textContent = textFromTextbox[0];
+		//document.querySelector("#cypherGoesHere").textContent = textFromTextbox;
+		//document.querySelector("#cypherGoesHere").textContent = cypherTextbox.value;
+		//document.querySelector("#cypherGoesHere").textContent = ALPHABET_ARRAY[25] + " " + NUMBER_ARRAY[8];
+		//document.querySelector("#cypherGoesHere").textContent = "Words";
+	}
+	
+	
+	//	New! To re-use createBlankArray() to replace blanks with letters.
+	var foundArray = [];
+	
+	//	When you click on "Easy", "Medium", or "Hard".
+	function goAwayButtons()
+	{
+		document.querySelector("#easyButton").style.display = "none";
+		document.querySelector("#mediumButton").style.display = "none";
+		document.querySelector("#hardButton").style.display = "none";
+		
+		//	Not a button, but I don't want to make another method just for this:
+		document.querySelector("#solved").style.display = "none";
+	}
+	
+	//	When the webpage first loads, don't show the textbox and guess button for Wheel-less Fortune. Also, clear textboxes.
+	//	Also, hide cat-dog buttons.
+	function reset()
+	{
+		document.querySelector("#guessBox").style.display = "none";
+		document.querySelector("#guessButton").style.display = "none";
+		
+		document.querySelector("#solveBox").style.display = "none";
+		document.querySelector("#solveButton").style.display = "none";
+		document.querySelector("#solved").style.display = "none";
+		document.querySelector("#notSolved").style.display = "none";
+		
+		document.querySelector("#cypherTextbox").value = "";
+		document.querySelector("#guessBox").value = "";
+		document.querySelector("#errorMessage").style.display = "none";
+		
+		
+		
+		document.querySelector("#speakButton").style.display = "none";
+		document.querySelector("#trickButton").style.display = "none";
+		document.querySelector("#boneButton").style.display = "none";
+		
+		document.querySelector("#dogBarking").style.display = "none";
+		document.querySelector("#dogShaking").style.display = "none";
+		document.querySelector("#dogChewing").style.display = "none";
+		document.querySelector("#catMeowing").style.display = "none";
+		document.querySelector("#nope").style.display = "none";
+		
+		//	Below doesn't work for making the radio buttons unchecked on page reload, doesn't seem like a huge problem though.
+		//document.querySelector("#catRadio").checked = "false";
+		//document.querySelector("#dogRadio").checked = "false";
+	}
+	
+	//	When you click on "Easy", "Medium", or "Hard".
+	function getReadyToGuess()
+	{
+		document.querySelector("#guessBox").style.display = "inline";
+		document.querySelector("#guessButton").style.display = "inline";
+		document.querySelector("#guessBox").value = "";
+		
+		document.querySelector("#solveBox").style.display = "inline";
+		document.querySelector("#solveButton").style.display = "inline";
+		document.querySelector("#solveBox").value = "";
+		
+		foundArray = [];
+	}
+	
+	var theAnswer = "";
+	var guessesLeft = 0;
+	
+
+	
+	function easyStuff()
+	{
+		goAwayButtons();
+		getReadyToGuess();
+		guessesLeft = 12;
+		createFoundArray(guessesLeft/4);
+		createBlankArray(guessesLeft/4);
+		theAnswer = "cat";
+	}
+	
+	function mediumStuff()
+	{
+		goAwayButtons();
+		getReadyToGuess();
+		guessesLeft = 14;
+		createFoundArray(guessesLeft/2);
+		createBlankArray(guessesLeft/2);
+		theAnswer = "jogging";
+	}
+	
+	function hardStuff()
+	{
+		goAwayButtons();
+		getReadyToGuess();
+		guessesLeft = 11;
+		createFoundArray(guessesLeft);
+		createBlankArray(guessesLeft);
+		theAnswer = "coronavirus";
+	}
+	
+	function createFoundArray(numberOfBlanks)
+	{
+		for (let index=0; index<numberOfBlanks; index++)
+		{
+			foundArray.push(" ");
+		}
+		//document.querySelector("#guessButton").value = foundArray[0];
+	}
+	
+	//	In Java, an array would be easier, but in JavaScript, can access letters like indexes in an array!
+	//var blankArrayOutsideFunction = [];
+	var blanksOutsideFunction = "";
+	
+	
+	function createBlankArray(numberOfBlanks)
+	{
+	
+		blanksOutsideFunction = "";
+		//document.querySelector("#blanksThatGetFilledIn").textContent = numberOfBlanks;
+		for (let index=0; index<numberOfBlanks; index++)
+		{
+			//blankArrayOutsideFunction.push("_");
+			//	Whoops, need a space betw each blank!
+			//blanksOutsideFunction = blanksOutsideFunction + "_";
+			
+			//	Fill in the letter(s) if guessed
+			if (foundArray[index]!==" ")
+			{
+				blanksOutsideFunction = blanksOutsideFunction + foundArray[index] + " ";
+				//document.querySelector("#guessButton").value = "There's a letter there!";
+			}
+			//	Everywhere else is a blank.
+			else
+			{
+				blanksOutsideFunction = blanksOutsideFunction + "_" + " ";
+				//document.querySelector("#guessButton").value = "Should be a blank.";
+			}
+			
+		}
+		document.querySelector("#blanksThatGetFilledIn").textContent = blanksOutsideFunction;
+		document.querySelector("#guessesLeft").textContent = "Guesses Left: " + guessesLeft;
+	}
+	
+	function guessStuff()
+	{
+		checkInputForErrors();
+		document.querySelector("#solved").style.display = "none";
+		document.querySelector("#notSolved").style.display = "none";
+	}
+	
+	//	Make sure the input is just one lower-case letter.
+	function checkInputForErrors()
+	{
+		var inputString = guessBox.value;
+		//	Makes sure the letter is both the start and the end of the regex, meaning nothing else can be there. 
+		const regex = /^[a-z]$/;
+		var onlyOneLower = inputString.match(regex);
+		if (onlyOneLower)
+		{
+			document.querySelector("#errorMessage").style.display = "none";
+			checkIfLetterInWord(inputString);
+		}
+		else
+		{
+			document.querySelector("#errorMessage").style.display = "block";
+		}
+	}
+	
+	function checkIfLetterInWord(theInput)
+	{
+		//	Darn, I was trying to show my knowledge of regex, but I don't think that will work because both things are variables.
+		
+		/*const regex = /theInput/g;
+		var foundALetter = regex.text(theAnswer);
+		if (foundALetter)
+		{
+			document.querySelector("#guessButton").value = "Found a letter";
+		}*/
+		
+		
+		for (let index=0; index<theAnswer.length; index++)
+		{
+			if (theAnswer[index] === theInput[0])
+			{
+				//	This is just a test, the real deal involves changing the blanks to the letters 
+				//document.querySelector("#guessButton").value = "Found a letter";
+				
+				foundArray[index] = theAnswer[index];
+				//document.querySelector("#guessButton").value = "There's a letter there!";
+			}
+		}
+		
+		//	/2 bec gap between each blank
+		createBlankArray(blanksOutsideFunction.length/2);
+		
+		guessesLeft--;
+		document.querySelector("#guessesLeft").textContent = "Guesses Left: " + guessesLeft;
+		checkWin();
+		checkLoose();
+		guessBox.value = "";
+	}
+	
+	function checkWin()
+	{
+		var win = true;
+		for (let index=0; index<blanksOutsideFunction.length; index++)
+		{
+			//	If some blanks haven't been filled in with a letter, you didn't win.
+			if (blanksOutsideFunction[index] === "_")
+			{
+				//document.querySelector("#guessButton").value = "There's a letter there!";
+				win = false;
+			}
+		}
+		if (win)
+		{
+			document.querySelector("#guessesLeft").textContent = "You win! Play again?";
+			endgameStuff();
+		}
+	}
+	
+	function checkLoose()
+	{
+		if (guessesLeft <= 0)
+		{
+			document.querySelector("#guessesLeft").textContent = "You loose. Play again?";
+			endgameStuff();
+		}
+	}
+	
+	function endgameStuff()
+	{
+		document.querySelector("#guessBox").style.display = "none";
+		document.querySelector("#guessButton").style.display = "none";
+		
+		document.querySelector("#solveBox").style.display = "none";
+		document.querySelector("#solveButton").style.display = "none";
+		//document.querySelector("#solved").style.display = "none";
+		
+		document.querySelector("#easyButton").style.display = "inline";
+		document.querySelector("#mediumButton").style.display = "inline";
+		document.querySelector("#hardButton").style.display = "inline";
+	}
+	
+	function solveEntirePuzzle()
+	{
+		document.querySelector("#solved").style.display = "none";
+		document.querySelector("#notSolved").style.display = "none";
+		document.querySelector("#errorMessage").style.display = "none";
+		
+		//var inputString = guessBox.value;
+		var wordGuess = solveBox.value;
+		//var wordGuess = lag;
+		var didWin = true;
+		//for (let index=0; index<theAnswer.length; index++)
+		for (let index=0; index<theAnswer.length; index++)
+		{
+			//document.querySelector("#guessesLeft").textContent = theAnswer.length;
+			if (index >= wordGuess.length || theAnswer[index] !== wordGuess[index])
+			{
+				didWin = false;
+			}
+		}
+		if (didWin)
+		{
+			document.querySelector("#solved").style.display = "inline";
+			endgameStuff();
+		}
+		else
+		{
+			document.querySelector("#notSolved").style.display = "inline";
+			guessesLeft--;
+			document.querySelector("#guessesLeft").textContent = "Guesses Left: " + guessesLeft;
+		}
+		solveBox.value = "";
+	}
+	
+	
+	//	Below is just for catDog:
+	
+	var catSelected = true;
+	
+	function catStuff()
+	{
+		document.querySelector("#speakButton").style.display = "inline";
+		document.querySelector("#trickButton").style.display = "inline";
+		document.querySelector("#boneButton").style.display = "none";
+		catSelected = true;
+	}
+	
+	function dogStuff()
+	{
+		document.querySelector("#speakButton").style.display = "inline";
+		document.querySelector("#trickButton").style.display = "inline";
+		document.querySelector("#boneButton").style.display = "inline";
+		catSelected = false;
+	}
+	
+	//	Structure: "Animal" abstract class, "Cat" class extends "Animal", "Dog" class extends "Animal".
+	//	Technically, Animal is just a superclass, I'm not sure how to do the Java code where an instance can't be created in JavaScript. 
+	
+	
+	/*var animal = 
+	{
+		"speak": "Generic sound",
+		"doTrick": "Shakes your hand with its paw."
+	}*/
+	
+	//	Need the function, .prototype, and an instance for an object. 
+	function Animal() 
+	{
+	
+	};
+	Animal.prototype =
+	{
+		constructor: Animal,
+		"speak": "Generic sound",
+		"doTrick": "Shakes your hand with its paw."
+	};
+	
+	//	Just testing, Animal needs to be an abstract class though. 
+	//var genericAnimal = Object.create(Animal.prototype);
+	
+	function Cat()
+	{
+	};
+	Cat.prototype = Object.create(Animal.prototype);
+	/*Cat.prototype =
+	{
+		constructor: Cat,
+		"doTrick": "Nope."
+	};*/
+	Cat.prototype.constructor = Cat;
+	Cat.prototype.speak = "Meow.";
+	Cat.prototype.doTrick = "Nope.";
+	
+	//	My irl cat's name is Huckleberry :)
+	var huckleberry = Object.create(Cat.prototype);
+	
+	
+	
+	
+	function Dog()
+	{
+	};
+	Dog.prototype = Object.create(Animal.prototype);
+	Dog.prototype.constructor = Dog;
+	//	Overriding Animal:
+	Dog.prototype["speak"] = "Woof!";
+	//	Not overriding Animal:
+	//Dog.prototype["doTrick"] =
+	//	Creating a new property:
+	Dog.prototype["chewBone"] = "Yum!"
+	
+	var fido = Object.create(Dog.prototype);
+	
+	function speakStuff()
+	{
+		//document.querySelector("#catDogReaction").textContent = animal.speak;
+		//document.querySelector("#catDogReaction").textContent = genericAnimal.speak;
+		clearPictures();
+		
+		if (catSelected)
+		{
+			document.querySelector("#catDogReaction").textContent = huckleberry.speak;
+			//	This is one of the pictures.
+			document.querySelector("#catMeowing").style.display = "block";
+		}
+		else
+		{
+			document.querySelector("#catDogReaction").textContent = fido["speak"];
+			document.querySelector("#dogBarking").style.display = "block";
+		}
+	}
+	function trickStuff()
+	{
+		clearPictures();
+	
+		if (catSelected)
+		{
+			document.querySelector("#catDogReaction").textContent = huckleberry.doTrick;
+			document.querySelector("#nope").style.display = "block";
+		}
+		else
+		{
+			document.querySelector("#catDogReaction").textContent = fido["doTrick"];
+			document.querySelector("#dogShaking").style.display = "block";
+		}
+	}
+	function chewStuff()
+	{
+		clearPictures();
+		//	Only a dog property, so no if/else:
+		document.querySelector("#catDogReaction").textContent = fido["chewBone"];
+		document.querySelector("#dogChewing").style.display = "block";
+	}
+	
+	function clearPictures()
+	{
+		document.querySelector("#dogBarking").style.display = "none";
+		document.querySelector("#dogShaking").style.display = "none";
+		document.querySelector("#dogChewing").style.display = "none";
+		document.querySelector("#catMeowing").style.display = "none";
+		document.querySelector("#nope").style.display = "none";
+	}
+	
+	
+	//	Nope, C#.NET
+	
+	/*function cookieStuff()
+	{
+		HttpCookie cookie = Request.Cookies["Password"];
+        if (cookie == null)
+        {
+            cookieParagraph.value = "Password saving.";
+        }
+        else
+        {
+            cookieParagraph.value = "Password saved";
+        }
+	}*/
+	
+	</script>
+</head>
+<body onload="reset()">
+<!-- The onload above hides some Wheel-less Fortune things and clears the cypherTextbox. -->
+
+<!-- This div allows for the stuff inside of it to be black, while the stuff outside is the pink border. -->
+<div>
+	<header>
+		<h1>Fun With JavaScript</h1>
+		<h4>
+			With my job search paused due to COVID19, I decided to learn more JavaScript for free at
+			<a href="https://www.freecodecamp.org/">freecodecamp.org</a>
+			Anyone can have fun with these games. If you are a programmer/potential employer, feel free to 
+			right-click and View Page Source to see the code and comments about it. Or click on one of the 
+			nav links below to view my older webpages.
+		</h4>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="education.html">Education</a></li>
+			<li><a href="jobs.html">Jobs</a></li>
+			<li><a href="csskills.html">CS Skills</a></li>
+			<li><a href="hobbies.html">Hobbies</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+	<main>
+		<!-- Making a table with no borders just to use tr:nth-of-type to alternate betw white and magenta colors -->
+		<table>
+			<tr>
+				<td>
+					Game 1: Random Sentence Generator. It's like Mad Libs, but the computer fills in ALL the blanks for an extra-hilarious sentence!
+					Each click of the button below generates a new sentence. 
+					<br />
+					<br />
+					<input type="button" class="buttonStuff" value="Generate Sentence" onclick="randomSentenceGenerator()">
+					<p id="sentenceGoesHere">
+						<!-- The randomSentenceGenerator() function will put text here. -->
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Game 2: Cryptic Code. Type some lower-case letters and numbers into the box below, then click the button and watch 
+					as the text transforms before your eyes! Can you tell how it's changed? Note, if you type something that is not a number 
+					or lower-case letter, it will not show up.
+					<!-- It's a Caeser Cypher. The letters go one ahead, the numbers one back. -->
+					<br />
+					<br />
+					<input type="text" id="cypherTextbox">
+					<input type="button" class="buttonStuff" value="Encrypt" onclick="encryptText()">
+					<p id="cypherGoesHere">
+						<!-- The text shifted by one will go here. -->
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Game 3: Wheel-less Fortune. It's all of the letter-guessing with none of the money! Try to guess the word
+					before you run out of guesses. Comes in three difficulties, although the hard one might not be as difficult as you think.....
+					<br />
+					<br />
+					<input type="button" class="buttonStuff" value="Easy" id="easyButton" onclick="easyStuff()">
+					<input type="button" class="buttonStuff" value="Medium" id="mediumButton" onclick="mediumStuff()">
+					<input type="button" class="buttonStuff" value="Hard" id="hardButton" onclick="hardStuff()">
+					
+					<!-- These should only show after you click on a button: -->
+					<input type="text" id="guessBox">
+					<input type="button" class="buttonStuff" value="Guess a Letter" id="guessButton" onclick="guessStuff()">
+					
+					<!-- New -->
+					
+					<!-- The problem with these br's is that I only want them to show up when the solveBox and solveButton are visible, but -->
+					<!-- they show up all the time, so nbsp better. -->
+					<!-- br / -->
+					<!-- br / -->
+					&nbsp; &nbsp; &nbsp; &nbsp;
+					<input type="text" id="solveBox">
+					<input type="button" class="buttonStuff" value="Solve the Puzzle" id="solveButton" onclick="solveEntirePuzzle()">
+					
+					
+					<p id="errorMessage">
+						Please guess one lower-case letter at a time.
+					</p>
+					
+					
+					<br />
+					<br />
+					<p id="solved">
+						You solved the puzzle! Play again?
+					</p>
+					<p id="notSolved">
+						That's not the answer.
+					</p>
+					
+					
+					<p id="blanksThatGetFilledIn">
+
+					</p>
+					<p id="guessesLeft">
+					
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Game 4: Cat-dog. Select the cat or dog, and see what they can do. Not the most fun as a game, but shows I know how to code objects.
+					<br />
+					<br />
+					
+					<form>
+						<!-- I think my teacher said giving them the same name is what only lets people choose one? I'm getting rusty :( -->
+						<input type="radio" name="catDog" id="catRadio" onchange="catStuff()">Cat
+						<br />
+						<input type="radio" name="catDog" id="dogRadio" onchange="dogStuff()">Dog
+						<br />
+						<br />
+					</form>
+					
+					<input type="button" class="buttonStuff" value="Speak" id="speakButton" onclick="speakStuff()">
+					<input type="button" class="buttonStuff" value="Do a Trick" id="trickButton" onclick="trickStuff()">
+					<input type="button" class="buttonStuff" value="Chew a Bone" id="boneButton" onclick="chewStuff()">
+					
+					<p id="catDogReaction">
+					
+					</p>
+					
+					<!-- These are all invisible until their corresponding buttons are clicked on -->
+					<img src="DogBarking.png" alt="A Dog Barking" id="dogBarking">
+					<img src="DogShakingPaws.png" alt="A Dog Shaking Paws" id="dogShaking">
+					<img src="DogChewingBone.png" alt="A Dog Chewing a Bone" id="dogChewing">
+					<img src="CatMeowing.png" alt="A Cat Meowing" id="catMeowing">
+					<img src="NopeGrumpyCat.png" alt="Grumpy Cat" id="nope">
+					
+				</td>
+			</tr>
+			<!-- tr -->
+				<!-- td -->
+					<!-- input type="button" class="buttonStuff" value="Will this work?" id="cookieButton" onclick="cookieStuff()" -->
+					<!-- p id="cookieParagraph" -->
+
+					<!-- /p -->
+				<!-- /td -->
+			<!-- /tr -->
+		</table>
+	</main>
+	<!-- Instead of a permanent "copyright" date, shows the date I last updated the webpage. Same as the aside on the "Home" page. -->
+	<footer>
+		Last Updated: 
+		<script> 
+			document.write(document.lastModified);
+		</script>
+	</footer>
+</div>
+</body>
