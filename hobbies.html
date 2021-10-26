@@ -95,6 +95,14 @@
 			document.querySelector("#copyrightNatureNotice").textContent = "This background image is copyright of Scottish Natural Heritage.";
 			document.querySelector("#copyrightNatureNotice").style.color = "#FFEECC";
 		}
+		else if (hobbyChoices.value == "videoGames")
+		{
+			hideMarchingBandStuff();
+			hideCopyrightNatureNotice();
+			hideIronMan();
+			document.querySelector("#hobbyInfo").textContent = "I enjoy playing and coding videogames. If you have an Android phone or tablet, check out my Super Mario inspired videogame, Bob Go!";
+			document.querySelector("#hobbiesDiv").style.backgroundImage = "url(SmolishBobGoScreenshot.png)";
+		}
 		else 
 		{
 			hideMarchingBandStuff();
@@ -134,6 +142,7 @@
 		<option value="music">Music</option>
 		<option value="creativeWriting">Creative Writing</option>
 		<option value="nature">Nature</option>
+		<option value="videoGames">Video Games</option>
 	</select>
 	
 	

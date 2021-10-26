@@ -59,15 +59,26 @@
 		if (radioButtonNumber == 0)
 		{
 			showUlOne();
-			document.querySelector("#liOne").textContent = "November 2014 - Present";
+			document.querySelector("#liOne").textContent = "November 2020 - February 2021";
 			showUlTwo();
-			document.querySelector("#liTwo").textContent = "Scan and key grocery data into Giant Eagle's Java cashiering program at a rate of >= 13 items/minute";
+			document.querySelector("#liTwo").textContent = "Designed GUI in Delphi";
 			showUlThree();
-			document.querySelector("#liThree").textContent = "Instruct new shoppers how to use chip readers, Apple Pay, and the Giant Eagle app";
+			document.querySelector("#liThree").textContent = "Performed CRUD operations on a MSSQL database using FireDAC";
 			showUlFour();
-			document.querySelector("#liFour").textContent = "Provide excellent customer service, receiving >= 2 positive online survey reviews";
+			document.querySelector("#liFour").textContent = "Used methods from a proprietary code library of over 50 units";
 		}
 		else if (radioButtonNumber == 1)
+		{
+			showUlOne();
+			document.querySelector("#liOne").textContent = "November 2014 - October 2020";
+			showUlTwo();
+			document.querySelector("#liTwo").textContent = "Scaned and keyed grocery data into Giant Eagle's Java cashiering program at a rate of >= 13 items/minute";
+			showUlThree();
+			document.querySelector("#liThree").textContent = "Instructed new shoppers how to use chip readers, Apple Pay, and the Giant Eagle app";
+			showUlFour();
+			document.querySelector("#liFour").textContent = "Provided excellent customer service, receiving >= 2 positive online survey reviews";
+		}
+		else if (radioButtonNumber == 2)
 		{
 			showUlOne();
 			document.querySelector("#liOne").textContent = "June 2014 - November 2014";
@@ -77,7 +88,7 @@
 			document.querySelector("#liThree").textContent = "Scanned paper patient records into Lake Health's computerized patient database";
 			hideUlFour();
 		}
-		else if (radioButtonNumber == 2)
+		else if (radioButtonNumber == 3)
 		{
 			showUlOne();
 			document.querySelector("#liOne").textContent = "October 2013 - April 2014";
@@ -87,7 +98,7 @@
 			document.querySelector("#liThree").textContent = "Searched through large quantities of items for small but significant errors, such as a bathing suit hanging on the coat display";
 			hideUlFour();
 		}
-		else if (radioButtonNumber == 3)
+		else if (radioButtonNumber == 4)
 		{
 			showUlOne();
 			document.querySelector("#liOne").textContent = "October 2012 - October 2013";
@@ -98,7 +109,7 @@
 			showUlFour();
 			document.querySelector("#liFour").textContent = "Quickly and efficiently switched between Pizza Hut's 7 main workstations";
 		}
-		else if (radioButtonNumber == 4)
+		else if (radioButtonNumber == 5)
 		{
 			showUlOne();
 			document.querySelector("#liOne").textContent = "April 2012 - August 2012";
@@ -135,11 +146,12 @@
 		Select a job to learn more about it.
 	</h3>
 		<form id="formId">
-			<input type="radio" name="jobChoices" id="giantEagle" value="giantEagle" onchange="displayJobResponsibilities(0)">Giant Eagle<br/>
-			<input type="radio" name="jobChoices" id="lakeHealth" value="lakeHealth" onchange="displayJobResponsibilities(1)">Lake Health<br/>
-			<input type="radio" name="jobChoices" id="sears" value="sears" onchange="displayJobResponsibilities(2)">Sears<br/>
-			<input type="radio" name="jobChoices" id="pizzaHut" value="pizzaHut" onchange="displayJobResponsibilities(3)">Pizza Hut<br/>
-			<input type="radio" name="jobChoices" id="chesterlandTavern" value="chesterlandTavern" onchange="displayJobResponsibilities(4)">Chesterland Tavern<br/>
+			<input type="radio" name="jobChoices" id="boyd" value="boyd" onchange="displayJobResponsibilities(0)">Boyd Watterson Asset Management<br/>
+			<input type="radio" name="jobChoices" id="giantEagle" value="giantEagle" onchange="displayJobResponsibilities(1)">Giant Eagle<br/>
+			<input type="radio" name="jobChoices" id="lakeHealth" value="lakeHealth" onchange="displayJobResponsibilities(2)">Lake Health<br/>
+			<input type="radio" name="jobChoices" id="sears" value="sears" onchange="displayJobResponsibilities(3)">Sears<br/>
+			<input type="radio" name="jobChoices" id="pizzaHut" value="pizzaHut" onchange="displayJobResponsibilities(4)">Pizza Hut<br/>
+			<input type="radio" name="jobChoices" id="chesterlandTavern" value="chesterlandTavern" onchange="displayJobResponsibilities(5)">Chesterland Tavern<br/>
 		</form>
 	<ul id="ulOne">
 		<li id="liOne"></li>
